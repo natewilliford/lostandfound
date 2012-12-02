@@ -1,0 +1,35 @@
+<h1>Hello, Rails!</h1>
+
+  <style type="text/css">
+    html { height: 100% }
+    body { height: 100%; margin: 0; padding: 0 }
+    #map_canvas { height: 100% }
+  </style>
+  <script type="text/javascript"
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkKtVpbzX1OL7DvTHJsrwzsL99pkeEJts&sensor=false">
+  </script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      var mapOptions = {
+        center: new google.maps.LatLng(47.70494, -122.34971),
+        zoom: 17,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      var map = new google.maps.Map(document.getElementById("map_canvas"),
+          mapOptions);
+
+      // var latLngs = [];
+      var latLng;
+      var markers = [];
+      <% @all_posts.each do |post| %>
+      // latLngs.push(new google.maps.LatLng(<%= post.location.lat %>, <%= post.location.lng %>));
+      latLng = new google.maps.LatLng(<%= post.location.lat %>, <%= post.location.lng %>);
+      markers.push(new google.maps.Marker({
+          position: latLng,
+          map: map,
+          title:"<%= post.title %>"
+      }));
+      <% end %>
+  });
+  </script>
+  <div id="map_canvas" style="width:100%; height:100%"></div>

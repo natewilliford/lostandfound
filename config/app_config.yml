@@ -1,0 +1,8 @@
+defaults:
+  google_api_key: 'AIzaSyAkKtVpbzX1OL7DvTHJsrwzsL99pkeEJts'
+
+development:
+
+test:
+
+production:
